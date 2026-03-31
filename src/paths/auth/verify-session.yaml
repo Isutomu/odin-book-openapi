@@ -1,0 +1,23 @@
+get:
+  summary: Verify is user session is valid
+  operationId: verify-session
+  tags:
+    - auth
+  security:
+    - cookieAuth: []
+  responses:
+    '200':
+      description: Session is valid
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - message
+            properties:
+              message:
+                type: string
+    '401':
+      $ref: '../../components/responses/401Unauthorized.yaml'
+    '500':
+      $ref: '../../components/responses/500InternalServerError.yaml'

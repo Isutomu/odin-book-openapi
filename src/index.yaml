@@ -1,0 +1,35 @@
+openapi:  '3.1.0'
+info:
+  version: 1.0.0
+  title: odinbook API
+  contact:
+    name: Isutomu Naruto
+    email: isutomu@gmail.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
+tags:
+  - name: auth
+    description: Authentication and authorization operations.
+
+servers:
+  - url: http://localhost:5173
+    description: Localhost Development Server
+  - url: 'https://odin-book-backend-top-production.up.railway.app'
+    description: Production Server
+
+paths:
+  /auth/signup:
+    $ref: './paths/auth/signup.yaml'
+  /auth/login:
+    $ref: './paths/auth/login.yaml'
+  /auth/verify-session:
+    $ref: './paths/auth/verify-session.yaml'
+
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: 'connect.sid'
