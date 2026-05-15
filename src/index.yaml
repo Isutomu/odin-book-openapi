@@ -26,6 +26,8 @@ paths:
     $ref: './paths/auth/login.yaml'
   /auth/verify-session:
     $ref: './paths/auth/verify-session.yaml'
+  /post/create:
+    $ref: './paths/post/create.yaml'
 
 components:
   securitySchemes:
