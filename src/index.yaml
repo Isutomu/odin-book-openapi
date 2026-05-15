@@ -28,6 +28,8 @@ paths:
     $ref: './paths/auth/verify-session.yaml'
   /post/create:
     $ref: './paths/post/create.yaml'
+  /post/delete/{postId}:
+    $ref: './paths/post/delete_RPpostId.yaml'
 
 components:
   securitySchemes:
