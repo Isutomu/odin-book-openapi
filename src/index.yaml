@@ -40,6 +40,8 @@ paths:
     $ref: './paths/post/read_RPpostId.yaml'
   /post/read-all/{username}:
     $ref: './paths/post/read-all_RPusername.yaml'
+  /post/read-all/{username}/pagination/{lastPostId}:
+    $ref: './paths/post/read-all_pagination_RPusername.yaml'
 
 components:
   securitySchemes:
