@@ -1,0 +1,37 @@
+get:
+  summary: Get more posts from an user
+  operationId: getAllPostsPagination
+  tags:
+    - auth
+  parameters:
+    - in: path
+      name: username
+      schema:
+        type: string
+      required: true
+      description: username
+    - in: path
+      name: lastPostId
+      schema:
+        type: string
+      required: true
+      description: ID of the last post of the current feed on the frontend
+  responses:
+    '200':
+      description: Got user's posts
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - message
+              - data
+            properties:
+              message:
+                type: string
+              data:
+                $ref: '../../components/schemas/Feed.yaml'
+    '404':
+      $ref: '../../components/responses/404NotFound.yaml'
+    '500':
+      $ref: '../../components/responses/500InternalServerError.yaml'

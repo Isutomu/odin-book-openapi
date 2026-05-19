@@ -1,0 +1,19 @@
+delete:
+  summary: Delete a post
+  operationId: deletePost
+  tags:
+    - auth
+  parameters:
+    - in: path
+      name: postId
+      schema:
+        type: string
+      required: true
+      description:  ID of the post to delete
+  responses:
+    '204':
+      description: Deleted post
+    '404':
+      $ref: '../../components/responses/404NotFound.yaml'
+    '500':
+      $ref: '../../components/responses/500InternalServerError.yaml'

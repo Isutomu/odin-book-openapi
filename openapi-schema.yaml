@@ -156,6 +156,273 @@ paths:
                   ma"
         "500":
           $ref: "#/paths/~1auth~1signup/post/responses/500"
+  /post/create:
+    post:
+      summary: Create a post
+      operationId: createPost
+      tags:
+        - auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - content
+              properties:
+                content:
+                  type: string
+      responses:
+        "201":
+          description: Created post
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+        "422":
+          $ref: "#/paths/~1auth~1signup/post/responses/422"
+        "500":
+          $ref: "#/paths/~1auth~1signup/post/responses/500"
+  "/post/delete/{postId}":
+    delete:
+      summary: Delete a post
+      operationId: deletePost
+      tags:
+        - auth
+      parameters:
+        - in: path
+          name: postId
+          schema:
+            type: string
+          required: true
+          description: ID of the post to delete
+      responses:
+        "204":
+          description: Deleted post
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1auth~1signup/post/responses/409/content/application~1json/sche\
+                  ma"
+        "500":
+          $ref: "#/paths/~1auth~1signup/post/responses/500"
+  "/post/update/{postId}":
+    patch:
+      summary: Update a post content
+      operationId: updatePost
+      tags:
+        - auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - content
+              properties:
+                content:
+                  $ref: "#/paths/~1post~1create/post/requestBody/content/application~1json/schema\
+                    /properties/content"
+      responses:
+        "204":
+          description: Updated post
+        "404":
+          $ref: "#/paths/~1post~1delete~1%7BpostId%7D/delete/responses/404"
+        "500":
+          $ref: "#/paths/~1auth~1signup/post/responses/500"
+  /post/feed:
+    get:
+      summary: Get an user feed
+      operationId: getFeed
+      tags:
+        - auth
+      responses:
+        "200":
+          description: Got feed
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                  - data
+                properties:
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/paths/~1post~1read~1%7BpostId%7D/get/responses/200/content/application\
+                        ~1json/schema/properties/data"
+                    maxItems: 10
+                    uniqueItems: true
+        "500":
+          $ref: "#/paths/~1auth~1signup/post/responses/500"
+  "/post/feed/pagination/{lastPostId}":
+    get:
+      summary: Get more posts from an user feed
+      operationId: getFeedPagination
+      tags:
+        - auth
+      parameters:
+        - in: path
+          name: lastPostId
+          schema:
+            type: string
+          required: true
+          description: ID of the last post of the current feed on the frontend
+      responses:
+        "200":
+          description: Got more posts of feed
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                  - data
+                properties:
+                  message:
+                    type: string
+                  data:
+                    $ref: "#/paths/~1post~1feed/get/responses/200/content/application~1json/schema/\
+                      properties/data"
+        "404":
+          $ref: "#/paths/~1post~1delete~1%7BpostId%7D/delete/responses/404"
+        "500":
+          $ref: "#/paths/~1auth~1signup/post/responses/500"
+  "/post/read/{postId}":
+    get:
+      summary: Get a post
+      operationId: getPost
+      tags:
+        - auth
+      parameters:
+        - in: path
+          name: postId
+          schema:
+            type: string
+          required: true
+          description: ID of the post
+      responses:
+        "200":
+          description: Got post
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                  - data
+                properties:
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      content:
+                        type: string
+                      publishedAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type:
+                          - string
+                          - null
+                        format: date-time
+                      author:
+                        type: object
+                        properties:
+                          username:
+                            type: string
+        "404":
+          $ref: "#/paths/~1post~1delete~1%7BpostId%7D/delete/responses/404"
+        "500":
+          $ref: "#/paths/~1auth~1signup/post/responses/500"
+  "/post/read-all/{username}":
+    get:
+      summary: Get all posts from an user
+      operationId: getAllPosts
+      tags:
+        - auth
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: username
+      responses:
+        "200":
+          description: Got user's posts
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                  - data
+                properties:
+                  message:
+                    type: string
+                  data:
+                    $ref: "#/paths/~1post~1feed/get/responses/200/content/application~1json/schema/\
+                      properties/data"
+        "404":
+          $ref: "#/paths/~1post~1delete~1%7BpostId%7D/delete/responses/404"
+        "500":
+          $ref: "#/paths/~1auth~1signup/post/responses/500"
+  "/post/read-all/{username}/pagination/{lastPostId}":
+    get:
+      summary: Get more posts from an user
+      operationId: getAllPostsPagination
+      tags:
+        - auth
+      parameters:
+        - in: path
+          name: username
+          schema:
+            type: string
+          required: true
+          description: username
+        - in: path
+          name: lastPostId
+          schema:
+            type: string
+          required: true
+          description: ID of the last post of the current feed on the frontend
+      responses:
+        "200":
+          description: Got user's posts
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                  - data
+                properties:
+                  message:
+                    type: string
+                  data:
+                    $ref: "#/paths/~1post~1feed/get/responses/200/content/application~1json/schema/\
+                      properties/data"
+        "404":
+          $ref: "#/paths/~1post~1delete~1%7BpostId%7D/delete/responses/404"
+        "500":
+          $ref: "#/paths/~1auth~1signup/post/responses/500"
 components:
   securitySchemes:
     cookieAuth:
