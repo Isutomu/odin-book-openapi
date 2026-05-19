@@ -1,0 +1,23 @@
+patch:
+  summary: Update a post content
+  operationId: updatePost
+  tags:
+    - auth
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - 'content'
+          properties:
+            content:
+              $ref: '../../components/schemas/Content.yaml'
+  responses:
+    '204':
+      description: Updated post
+    '404':
+      $ref: '../../components/responses/404NotFound.yaml'
+    '500':
+      $ref: '../../components/responses/500InternalServerError.yaml'
