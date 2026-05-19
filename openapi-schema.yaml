@@ -11,6 +11,8 @@ info:
 tags:
   - name: auth
     description: Authentication and authorization operations.
+  - name: post
+    description: CRUD operations with post(s).
 servers:
   - url: http://localhost:5173
     description: Localhost Development Server
@@ -161,7 +163,7 @@ paths:
       summary: Create a post
       operationId: createPost
       tags:
-        - auth
+        - post
       requestBody:
         required: true
         content:
@@ -194,7 +196,7 @@ paths:
       summary: Delete a post
       operationId: deletePost
       tags:
-        - auth
+        - post
       parameters:
         - in: path
           name: postId
@@ -219,7 +221,7 @@ paths:
       summary: Update a post content
       operationId: updatePost
       tags:
-        - auth
+        - post
       parameters:
         - in: path
           name: postId
@@ -251,7 +253,7 @@ paths:
       summary: Get an user feed
       operationId: getFeed
       tags:
-        - auth
+        - post
       responses:
         "200":
           description: Got feed
@@ -279,7 +281,7 @@ paths:
       summary: Get more posts from an user feed
       operationId: getFeedPagination
       tags:
-        - auth
+        - post
       parameters:
         - in: path
           name: lastPostId
@@ -312,7 +314,7 @@ paths:
       summary: Get a post
       operationId: getPost
       tags:
-        - auth
+        - post
       parameters:
         - in: path
           name: postId
@@ -363,7 +365,7 @@ paths:
       summary: Get all posts from an user
       operationId: getAllPosts
       tags:
-        - auth
+        - post
       parameters:
         - in: path
           name: username
@@ -396,7 +398,7 @@ paths:
       summary: Get more posts from an user
       operationId: getAllPostsPagination
       tags:
-        - auth
+        - post
       parameters:
         - in: path
           name: username

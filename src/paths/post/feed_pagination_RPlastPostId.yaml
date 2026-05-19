@@ -2,7 +2,7 @@ get:
   summary: Get more posts from an user feed
   operationId: getFeedPagination
   tags:
-    - auth
+    - post
   parameters:
     - in: path
       name: lastPostId

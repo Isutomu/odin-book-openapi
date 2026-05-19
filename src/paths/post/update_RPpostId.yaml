@@ -2,7 +2,7 @@ patch:
   summary: Update a post content
   operationId: updatePost
   tags:
-    - auth
+    - post
   parameters:
     - in: path
       name: postId

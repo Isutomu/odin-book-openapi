@@ -2,7 +2,7 @@ post:
   summary: Create a post
   operationId: createPost
   tags:
-    - auth
+    - post
   requestBody:
     required: true
     content:

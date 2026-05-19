@@ -2,7 +2,7 @@ delete:
   summary: Delete a post
   operationId: deletePost
   tags:
-    - auth
+    - post
   parameters:
     - in: path
       name: postId

@@ -2,7 +2,7 @@ get:
   summary: Get all posts from an user
   operationId: getAllPosts
   tags:
-    - auth
+    - post
   parameters:
     - in: path
       name: username

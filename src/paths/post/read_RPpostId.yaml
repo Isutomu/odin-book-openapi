@@ -2,7 +2,7 @@ get:
   summary: Get a post
   operationId: getPost
   tags:
-    - auth
+    - post
   parameters:
     - in: path
       name: postId

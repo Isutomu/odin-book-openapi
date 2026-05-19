@@ -2,7 +2,7 @@ get:
   summary: Get an user feed
   operationId: getFeed
   tags:
-    - auth
+    - post
   responses:
     '200':
       description: Got feed

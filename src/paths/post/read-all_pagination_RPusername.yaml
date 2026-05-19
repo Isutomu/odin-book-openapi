@@ -2,7 +2,7 @@ get:
   summary: Get more posts from an user
   operationId: getAllPostsPagination
   tags:
-    - auth
+    - post
   parameters:
     - in: path
       name: username
