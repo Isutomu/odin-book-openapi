@@ -3,6 +3,13 @@ patch:
   operationId: updatePost
   tags:
     - auth
+  parameters:
+    - in: path
+      name: postId
+      schema:
+        type: string
+      required: true
+      description:  ID of the post to update
   requestBody:
     required: true
     content:
