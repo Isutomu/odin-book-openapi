@@ -1,0 +1,22 @@
+get:
+  summary: Get an user feed
+  operationId: getFeed
+  tags:
+    - auth
+  responses:
+    '200':
+      description: Got feed
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - message
+              - data
+            properties:
+              message:
+                type: string
+              data:
+                $ref: '../../components/schemas/Feed.yaml'
+    '500':
+      $ref: '../../components/responses/500InternalServerError.yaml'

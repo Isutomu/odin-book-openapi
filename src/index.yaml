@@ -32,6 +32,8 @@ paths:
     $ref: './paths/post/delete_RPpostId.yaml'
   /post/update/{postId}:
     $ref: './paths/post/update_RPpostId.yaml'
+  /post/feed:
+    $ref: './paths/post/feed.yaml'
 
 components:
   securitySchemes:
