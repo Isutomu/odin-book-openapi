@@ -36,6 +36,8 @@ paths:
     $ref: './paths/post/feed.yaml'
   /post/feed/pagination/{lastPostId}:
     $ref: './paths/post/feed_pagination_RPlastPostId.yaml'
+  /post/read/{postId}:
+    $ref: './paths/post/read_RPpostId.yaml'
 
 components:
   securitySchemes:
