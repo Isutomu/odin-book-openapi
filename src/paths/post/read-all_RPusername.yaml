@@ -1,0 +1,31 @@
+get:
+  summary: Get all posts from an user
+  operationId: getAllPosts
+  tags:
+    - auth
+  parameters:
+    - in: path
+      name: username
+      schema:
+        type: string
+      required: true
+      description: username
+  responses:
+    '200':
+      description: Got user's posts
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - message
+              - data
+            properties:
+              message:
+                type: string
+              data:
+                $ref: '../../components/schemas/Feed.yaml'
+    '404':
+      $ref: '../../components/responses/404NotFound.yaml'
+    '500':
+      $ref: '../../components/responses/500InternalServerError.yaml'

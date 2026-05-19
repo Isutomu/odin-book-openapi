@@ -38,6 +38,8 @@ paths:
     $ref: './paths/post/feed_pagination_RPlastPostId.yaml'
   /post/read/{postId}:
     $ref: './paths/post/read_RPpostId.yaml'
+  /post/read-all/{username}:
+    $ref: './paths/post/read-all_RPusername.yaml'
 
 components:
   securitySchemes:
