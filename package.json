@@ -15,6 +15,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "build": "speccy resolve src/index.yaml --output openapi-schema.yaml"
+    "build-speccy": "speccy resolve src/index.yaml --output openapi-schema.yaml",
+    "build-swagger": "swagger-cli bundle --dereference --type yaml -o openapi-schema.yaml ./src/index.yaml"
   }
 }
